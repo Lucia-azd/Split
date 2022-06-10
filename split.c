@@ -5,8 +5,8 @@
 
 /* 
 * Calcula la cantidad de substring, separados por el separador pasado por parametro, que se encuentran en el string pasado por parametro.
-*
-* Devuelve la cantidad de substrings que hay en el string pasado por parametro
+* Pre: -
+* Pos: Devuelve la cantidad de substrings que hay en el string pasado por parametro
 */
 size_t calcular_cantidad_substrings(const char* string, char separador){
     size_t cantidad = 1;
@@ -21,8 +21,8 @@ size_t calcular_cantidad_substrings(const char* string, char separador){
 /* 
 * Calcula el tamaño de un substring, empezando a contar desde su inicio pasado por parametro hasta que se encuentre con un caracter
 * igual al pasado por parametro, el cual significa que ya termino un substring y comienza otro.
-*
-* Devuelve el tamaño del substring
+* Pre: -
+* Pos: Devuelve el tamaño del substring
 */
 int calcular_tamanio_substring(const char* string, int inicio_substring, char separador){
     int tamanio = 1;
@@ -37,8 +37,8 @@ int calcular_tamanio_substring(const char* string, int inicio_substring, char se
 /* 
 * Se copia en memoria reservada en el heap el substring del string pasado por parametro que comienza desde el inicio pasado por parametro
 * hasta el tamaño calculado anteriormente pasado por parametro
-*
-* Devuelve el substring con los caracteres correspondientes copiados del string pasado por parametro, si algo salio mal devuelve NULL
+* Pre: -
+* Pos: Devuelve el substring con los caracteres correspondientes copiados del string pasado por parametro, si algo salio mal devuelve NULL
 */
 char* copiar_substring(const char* string, int tamanio_substring, int inicio_substring){
     int i = inicio_substring;
@@ -56,8 +56,9 @@ char* copiar_substring(const char* string, int tamanio_substring, int inicio_sub
     return substring;
 }
 
-/*  
-* Libera los substring y el vector de substrings
+/*
+* Pre: -  
+* Pos: Libera los substring y el vector de substrings
 */
 void liberar_vector(char** vector){
     if(vector){
