@@ -47,7 +47,7 @@ char* copiar_substring(const char* string, int tamanio_substring, int inicio_sub
     if (!substring){
         return NULL;
     }
-    while((j<tamanio_substring-1)){
+    while( ( j < tamanio_substring - 1 ) ){
         substring[j] = string[i];
         j++;
         i++;
@@ -60,10 +60,12 @@ char* copiar_substring(const char* string, int tamanio_substring, int inicio_sub
 * Libera los substring y el vector de substrings
 */
 void liberar_vector(char** vector){
-    for (int i = 0; vector[i]!=0; i++){
-        free(vector[i]);
+    if(vector){
+        for (int i = 0; vector[i] != 0; i++){
+            free(vector[i]);
+        }
+        free(vector);
     }
-    free(vector);
 }
 
 char** split(const char* string, char separador){
@@ -97,4 +99,67 @@ char** split(const char* string, char separador){
     }
     vector_split[i] = NULL;
     return vector_split;
+}
+
+void mostrar_resultado(char** descripcion){
+    if(descripcion){
+        int i = 0;
+
+        printf("\n[");
+        while (descripcion[i]){
+            if(descripcion[i+1] == NULL){
+                if(strcmp(descripcion[i],"") == 0){
+                    printf(" ");
+                }else{
+                    printf("'%s'", descripcion[i]);
+                }
+            } else{
+                if(strcmp(descripcion[i],"") == 0){
+                    printf(" , ");
+                }else{
+                    printf("'%s', ", descripcion[i]);
+                }
+            }
+            i++;
+        }
+        printf("]\n");
+    }
+    liberar_vector(descripcion);
+}
+
+void mostrar_split(const char* string, char separador){
+    printf("\nSimulador de la aplicacion de Split en el lenguaje Python\n");
+    printf(">>> '%s'.split('%c')", string, separador);
+}
+
+int main(){
+
+    char** descripcion;
+
+    printf("Ejemplos de uso de la primitiva Split: \n");
+
+    descripcion = split("123:456:789:0", ':');
+    mostrar_split("123:456:789:0", ':');
+    mostrar_resultado(descripcion);
+    
+    descripcion = split("Hola como estas?", ' ');
+    mostrar_split("Hola como estas?", ' ');
+    mostrar_resultado(descripcion);
+    
+    descripcion = split("Hola mundo", '?');
+    mostrar_split("Hola mundo", '?');
+    mostrar_resultado(descripcion);
+    
+    descripcion = split(",1,2,3,", ',');
+    mostrar_split(",1,2,3,", ',');
+    mostrar_resultado(descripcion);
+    
+    descripcion = split("", ',');
+    mostrar_split("", ',');
+    mostrar_resultado(descripcion);
+    
+    descripcion = split(NULL, ';');
+    mostrar_resultado(descripcion);
+
+    return 0;
 }
