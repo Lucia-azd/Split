@@ -2,6 +2,8 @@
 
 Implementación de la primitiva split (primitiva que recibe un string y un delimitador y devuelve un vector con los strings delimitados), utilizando memoria dinámica.
 
+![Image text](/img_split.png)
+
 ## Lenguaje usado
 
 - C
