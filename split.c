@@ -109,13 +109,13 @@ void mostrar_resultado(char** descripcion){
         while (descripcion[i]){
             if(descripcion[i+1] == NULL){
                 if(strcmp(descripcion[i],"") == 0){
-                    printf(" ");
+                    printf("''");
                 }else{
                     printf("'%s'", descripcion[i]);
                 }
             } else{
                 if(strcmp(descripcion[i],"") == 0){
-                    printf(" , ");
+                    printf("'', ");
                 }else{
                     printf("'%s', ", descripcion[i]);
                 }
